@@ -38,9 +38,9 @@ const timeline = [
 ];
 ---
 
-<section class="experience-section" id="experience">
-  <div class="container">
-    <div class="header-content">
+<section class="experience-section section-shell" id="experience" data-accent="#f59e0b">
+  <div class="container" data-section-scroll>
+    <div class="header-content" data-reveal>
       <div class="section-badge"><span></span> Background</div>
       <h2 class="section-title">Experience & Education</h2>
       <p class="section-description">
@@ -50,8 +50,8 @@ const timeline = [
 
     <div class="timeline">
       {
-        timeline.map((item) => (
-          <div class="timeline-item">
+        timeline.map((item, index) => (
+          <div class="timeline-item" data-reveal style={`--stagger: ${index + 1};`}>
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <div class="card-header">
@@ -133,7 +133,7 @@ const timeline = [
     bottom: 0;
     left: 4px;
     width: 2px;
-    background-color: var(--border-color);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 70%, transparent), rgba(148, 163, 184, 0.14));
   }
 
   .timeline-item {
@@ -158,16 +158,22 @@ const timeline = [
   }
 
   .timeline-content {
-    background-color: var(--pill-bg);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(10, 18, 32, 0.84));
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+    box-shadow: 0 22px 48px rgba(2, 8, 23, 0.16);
   }
 
   .timeline-content:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--accent);
+    box-shadow: 0 28px 56px color-mix(in srgb, var(--accent) 12%, rgba(2, 8, 23, 0.3));
   }
 
   .card-header {
@@ -178,8 +184,9 @@ const timeline = [
   }
 
   .type-badge {
-    background-color: var(--accent);
-    color: #000;
+    background:
+      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 32%, white));
+    color: #04111f;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.4rem 1rem;

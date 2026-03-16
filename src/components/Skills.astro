@@ -8,9 +8,9 @@ const skills = [
 ];
 ---
 
-<section class="skills-section" id="skills">
-  <div class="container">
-    <div class="header-content">
+<section class="skills-section section-shell" id="skills" data-accent="#34d399">
+  <div class="container" data-section-scroll>
+    <div class="header-content" data-reveal>
       <div class="section-badge"><span></span> Expertise</div>
       <h2 class="section-title">Skills & Tech Stack</h2>
       <p class="section-description">
@@ -20,8 +20,8 @@ const skills = [
 
     <div class="skills-grid">
       {
-        skills.map((skill) => (
-          <div class="skill-card">
+        skills.map((skill, index) => (
+          <div class="skill-card" data-reveal="zoom" style={`--stagger: ${index + 1};`}>
             <div class="skill-icon-wrapper">
               <svg 
                 class="skill-icon" 
@@ -105,7 +105,8 @@ const skills = [
   }
 
   .skill-card {
-    background-color: var(--pill-bg);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(10, 18, 32, 0.78));
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2.5rem 1.5rem;
@@ -113,16 +114,22 @@ const skills = [
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+    box-shadow: 0 24px 50px rgba(2, 8, 23, 0.16);
   }
 
   .skill-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     border-color: var(--accent);
+    box-shadow: 0 28px 55px color-mix(in srgb, var(--accent) 12%, rgba(2, 8, 23, 0.3));
   }
 
   .skill-icon-wrapper {
-    background-color: var(--bg-color);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(5, 11, 20, 0.8));
     width: 64px;
     height: 64px;
     border-radius: 12px;
@@ -130,7 +137,8 @@ const skills = [
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
   .skill-name {

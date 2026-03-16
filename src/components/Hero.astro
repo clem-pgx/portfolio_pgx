@@ -2,21 +2,21 @@
 const avatarSrc = "/avatar.png";
 ---
 
-<section class="hero" id="about">
-  <div class="profile-container">
-    <img src={avatarSrc} alt="Alex Johnson Profile" class="profile-pic" />
+<section class="hero section-shell" id="about" data-accent="#67e8f9">
+  <div class="profile-container" data-reveal="zoom">
+    <img src={avatarSrc} alt="Portrait de Clément Pageaux" class="profile-pic" />
   </div>
 
-  <h1 class="name">CLément Pageaux</h1>
-  <h2 class="title">Software Engineer</h2>
+  <h1 class="name" data-reveal style="--stagger: 1;">Clément Pageaux</h1>
+  <h2 class="title" data-reveal style="--stagger: 2;">Software Engineer</h2>
 
-  <p class="bio">
+  <p class="bio" data-reveal style="--stagger: 3;">
     I build scalable web applications with clean code and thoughtful UX.<br />
     Passionate about creating impactful software that solves real problems.
   </p>
 
-  <div class="actions">
-    <a href="https://linkedin.com" target="_blank" class="btn btn-outline">
+  <div class="actions" data-reveal style="--stagger: 4;">
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
       <svg
         stroke="currentColor"
         fill="currentColor"
@@ -48,7 +48,7 @@ const avatarSrc = "/avatar.png";
     </a>
   </div>
 
-  <div class="scroll-down-hint">
+  <div class="scroll-down-hint" data-reveal style="--stagger: 5;">
     <p>Scroll to explore</p>
     <svg
       class="scroll-arrow"
@@ -91,28 +91,35 @@ const avatarSrc = "/avatar.png";
     object-fit: cover;
     border: 3px solid var(--accent);
     animation: glow 4s infinite ease-in-out;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.03);
   }
 
   .name {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    letter-spacing: -1px;
+    letter-spacing: -0.05em;
+    font-family: var(--font-display);
   }
 
   .title {
-    font-size: 1.25rem;
-    color: var(--accent);
-    font-weight: 500;
+    font-size: 1rem;
+    color: #04111f;
+    font-weight: 700;
     margin-bottom: 1.5rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background:
+      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 40%, white));
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 18%, transparent);
   }
 
   .bio {
     color: var(--text-secondary);
-    font-size: 1.1rem;
-    max-width: 600px;
+    font-size: 1.08rem;
+    max-width: 640px;
     margin: 0 auto 2.5rem;
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
   .actions {
@@ -127,35 +134,45 @@ const avatarSrc = "/avatar.png";
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .btn-outline {
     border: 1px solid var(--border-color);
     color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.03);
   }
 
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(0, 229, 255, 0.05);
+    background: color-mix(in srgb, var(--accent) 10%, rgba(255, 255, 255, 0.02));
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(2, 8, 23, 0.25);
   }
 
   .btn-primary {
-    background-color: var(--accent);
-    color: #000;
+    background:
+      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, white));
+    color: #04111f;
     border: 1px solid var(--accent);
     font-weight: 600;
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--accent) 22%, transparent);
   }
 
   .btn-primary:hover {
-    background-color: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+    filter: saturate(1.05);
+    box-shadow: 0 24px 42px color-mix(in srgb, var(--accent) 28%, transparent);
   }
 
   .scroll-down-hint {
