@@ -1,15 +1,30 @@
 ---
+const navItems = [
+  { label: "Accueil", href: "#about" },
+  { label: "Projets", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Parcours", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 ---
 
-<header class="header">
-  <!-- <nav class="nav">
-    <a href="#about" class="nav-link">About</a>
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#skills" class="nav-link">Skills</a>
-    <a href="#experience" class="nav-link">Experience</a>
-    <a href="#contact" class="nav-link">Contact</a>
-    <a href="#dashboard" class="nav-link">Dashboard</a>
-  </nav> -->
+<header class="header" transition:persist>
+  <a href="#about" class="logo-container" aria-label="Retour en haut de page">
+    <span class="logo-icon">CP</span>
+    <span class="logo-text">Clément Pageaux</span>
+  </a>
+
+  <nav class="nav" aria-label="Navigation principale">
+    {
+      navItems.map((item) => (
+        <a href={item.href} class="nav-link">
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <a href="#contact" class="header-cta">Parlons projet</a>
 </header>
 
 <style>
@@ -17,63 +32,124 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 4rem;
+    gap: 1rem;
+    width: min(1120px, calc(100% - 1.5rem));
+    padding: 0.75rem 0.9rem 0.75rem 1.1rem;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(17, 19, 26, 0.8);
-    backdrop-filter: blur(12px);
-    z-index: 100;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(135deg, rgba(8, 15, 29, 0.92), rgba(10, 18, 34, 0.76));
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 999px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 60px rgba(2, 8, 23, 0.35);
+    z-index: 1000;
   }
 
   .logo-container {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    min-width: fit-content;
   }
 
   .logo-icon {
-    background-color: var(--accent);
-    color: #000;
+    background:
+      linear-gradient(135deg, var(--active-accent), color-mix(in srgb, var(--active-accent) 55%, white));
+    color: #04111f;
     font-weight: 800;
-    font-size: 1.1rem;
-    width: 30px;
-    height: 30px;
+    font-size: 0.95rem;
+    width: 2.6rem;
+    height: 2.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 6px;
+    border-radius: 999px;
+    box-shadow: 0 12px 25px color-mix(in srgb, var(--active-accent) 28%, transparent);
   }
 
   .logo-text {
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.5px;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
   }
 
   .nav {
     display: flex;
-    gap: 2rem;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.25rem;
+    background-color: rgba(15, 23, 42, 0.46);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 999px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    transition: color 0.3s ease;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
-  .nav-link:hover {
+  .nav-link:hover,
+  .nav-link.is-active {
     color: var(--text-primary);
+    background-color: color-mix(in srgb, var(--active-accent) 18%, rgba(255, 255, 255, 0.04));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--active-accent) 26%, rgba(255, 255, 255, 0.05));
+    transform: translateY(-1px);
+  }
+
+  .header-cta {
+    min-width: fit-content;
+    padding: 0.8rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #04111f;
+    background:
+      linear-gradient(135deg, var(--active-accent), color-mix(in srgb, var(--active-accent) 45%, white));
+    box-shadow: 0 12px 26px color-mix(in srgb, var(--active-accent) 18%, transparent);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .header-cta:hover {
+    transform: translateY(-2px);
+    filter: saturate(1.08);
+    box-shadow: 0 18px 32px color-mix(in srgb, var(--active-accent) 28%, transparent);
   }
 
   @media (max-width: 768px) {
     .header {
-      padding: 1rem 1.5rem;
+      width: calc(100% - 1rem);
+      padding: 0.7rem 0.8rem;
+      gap: 0.75rem;
     }
-    .nav {
-      display: none; /* Hide for mobile temporarily */
+
+    .logo-text {
+      display: none;
+    }
+
+    .header-cta {
+      display: none;
     }
   }
 </style>
