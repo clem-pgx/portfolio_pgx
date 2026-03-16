@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
@@ -44,14 +45,17 @@ const { title } = Astro.props;
 				const sections = Array.from(
 					document.querySelectorAll("main section[id][data-accent]")
 				);
-				const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+				const revealItems = Array.from(
+					document.querySelectorAll("[data-reveal]")
+				);
 				const navLinks = Array.from(
 					document.querySelectorAll(".header a[href^='#']")
 				);
 				const reduceMotion = window.matchMedia(
 					"(prefers-reduced-motion: reduce)"
 				).matches;
-				const largeViewport = window.matchMedia("(min-width: 960px)").matches;
+				const largeViewport =
+					window.matchMedia("(min-width: 960px)").matches;
 				const desktopPaged =
 					largeViewport && pageShell instanceof HTMLElement;
 				const defaultAccent =
@@ -60,7 +64,8 @@ const { title } = Astro.props;
 						.trim() || "#60a5fa";
 				const header = document.querySelector(".header");
 				const headerOffset = () =>
-					(header instanceof HTMLElement ? header.offsetHeight : 0) + 28;
+					(header instanceof HTMLElement ? header.offsetHeight : 0) +
+					28;
 				const scrollToSection = (section) => {
 					if (!(section instanceof HTMLElement)) {
 						return;
@@ -80,7 +85,9 @@ const { title } = Astro.props;
 					});
 				};
 				const findClosestSectionIndex = () => {
-					const scrollTop = desktopPaged ? pageShell.scrollTop : window.scrollY;
+					const scrollTop = desktopPaged
+						? pageShell.scrollTop
+						: window.scrollY;
 					const marker = scrollTop + window.innerHeight * 0.38;
 
 					return sections.reduce((closestIndex, section, index) => {
@@ -89,21 +96,31 @@ const { title } = Astro.props;
 							sections[closestIndex].offsetTop - marker
 						);
 
-						return distance < currentDistance ? index : closestIndex;
+						return distance < currentDistance
+							? index
+							: closestIndex;
 					}, 0);
 				};
 
 				const setActiveSection = (section) => {
 					if (!section) {
 						body.dataset.section = "default";
-						body.style.setProperty("--active-accent", defaultAccent);
-						navLinks.forEach((link) => link.classList.remove("is-active"));
+						body.style.setProperty(
+							"--active-accent",
+							defaultAccent
+						);
+						navLinks.forEach((link) =>
+							link.classList.remove("is-active")
+						);
 						return;
 					}
 
 					const { id, dataset } = section;
 					body.dataset.section = id;
-					body.style.setProperty("--active-accent", dataset.accent || defaultAccent);
+					body.style.setProperty(
+						"--active-accent",
+						dataset.accent || defaultAccent
+					);
 
 					navLinks.forEach((link) => {
 						const isActive = link.getAttribute("href") === `#${id}`;
@@ -145,7 +162,9 @@ const { title } = Astro.props;
 					}) || sections[0];
 
 				if (reduceMotion) {
-					revealItems.forEach((item) => item.classList.add("is-visible"));
+					revealItems.forEach((item) =>
+						item.classList.add("is-visible")
+					);
 					setActiveSection(initialSection);
 					window.__portfolioCleanup = () => {};
 					return;
@@ -175,7 +194,10 @@ const { title } = Astro.props;
 					(entries) => {
 						const visibleSections = entries
 							.filter((entry) => entry.isIntersecting)
-							.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+							.sort(
+								(a, b) =>
+									b.intersectionRatio - a.intersectionRatio
+							);
 
 						if (visibleSections[0]) {
 							setActiveSection(visibleSections[0].target);
@@ -239,8 +261,9 @@ const { title } = Astro.props;
 							return;
 						}
 
-						const sectionScroller =
-							currentSection.querySelector("[data-section-scroll]");
+						const sectionScroller = currentSection.querySelector(
+							"[data-section-scroll]"
+						);
 						const internalScroller =
 							event.target instanceof Element
 								? event.target.closest("[data-section-scroll]")
@@ -250,22 +273,25 @@ const { title } = Astro.props;
 							currentSection.contains(internalScroller)
 								? internalScroller
 								: sectionScroller instanceof HTMLElement
-									? sectionScroller
-									: null;
+								? sectionScroller
+								: null;
 						const canScrollInternally =
 							scrollElement instanceof HTMLElement &&
-							scrollElement.scrollHeight > scrollElement.clientHeight + 2;
+							scrollElement.scrollHeight >
+								scrollElement.clientHeight + 2;
 						const atTop =
 							!(scrollElement instanceof HTMLElement) ||
 							scrollElement.scrollTop <= 1;
 						const atBottom =
 							!(scrollElement instanceof HTMLElement) ||
-							scrollElement.scrollTop + scrollElement.clientHeight >=
+							scrollElement.scrollTop +
+								scrollElement.clientHeight >=
 								scrollElement.scrollHeight - 1;
 
 						if (
 							canScrollInternally &&
-							((event.deltaY > 0 && !atBottom) || (event.deltaY < 0 && !atTop))
+							((event.deltaY > 0 && !atBottom) ||
+								(event.deltaY < 0 && !atTop))
 						) {
 							wheelDeltaBuffer = 0;
 							if (scrollElement !== internalScroller) {
@@ -281,7 +307,9 @@ const { title } = Astro.props;
 						}
 
 						const targetIndex =
-							wheelDeltaBuffer > 0 ? activeIndex + 1 : activeIndex - 1;
+							wheelDeltaBuffer > 0
+								? activeIndex + 1
+								: activeIndex - 1;
 						const targetSection = sections[targetIndex];
 
 						if (!targetSection) {
@@ -311,21 +339,24 @@ const { title } = Astro.props;
 
 						const activeIndex = findClosestSectionIndex();
 						const activeSection = sections[activeIndex];
-						const internalScroller =
-							activeSection?.querySelector("[data-section-scroll]");
+						const internalScroller = activeSection?.querySelector(
+							"[data-section-scroll]"
+						);
 						const scrollElement =
 							internalScroller instanceof HTMLElement
 								? internalScroller
 								: null;
 						const canScrollInternally =
 							scrollElement instanceof HTMLElement &&
-							scrollElement.scrollHeight > scrollElement.clientHeight + 2;
+							scrollElement.scrollHeight >
+								scrollElement.clientHeight + 2;
 						const atTop =
 							!(scrollElement instanceof HTMLElement) ||
 							scrollElement.scrollTop <= 1;
 						const atBottom =
 							!(scrollElement instanceof HTMLElement) ||
-							scrollElement.scrollTop + scrollElement.clientHeight >=
+							scrollElement.scrollTop +
+								scrollElement.clientHeight >=
 								scrollElement.scrollHeight - 1;
 
 						if (
@@ -335,7 +366,9 @@ const { title } = Astro.props;
 							return;
 						}
 
-						const targetIndex = isNext ? activeIndex + 1 : activeIndex - 1;
+						const targetIndex = isNext
+							? activeIndex + 1
+							: activeIndex - 1;
 						const targetSection = sections[targetIndex];
 
 						if (!targetSection) {
@@ -357,7 +390,10 @@ const { title } = Astro.props;
 					cleanupPaging = () => {
 						unlockPaging();
 						sections.forEach((section) =>
-							section.removeEventListener("wheel", handleSectionWheel)
+							section.removeEventListener(
+								"wheel",
+								handleSectionWheel
+							)
 						);
 						window.removeEventListener("keydown", handleKeydown);
 					};
