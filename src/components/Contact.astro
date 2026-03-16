@@ -1,9 +1,9 @@
 ---
 ---
 
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="header-content text-center">
+<section class="contact-section section-shell" id="contact" data-accent="#60a5fa">
+  <div class="container" data-section-scroll>
+    <div class="header-content text-center" data-reveal>
       <div class="section-badge center-badge">
         <span></span>
         <span></span>
@@ -15,7 +15,7 @@
       </p>
     </div>
 
-    <div class="contact-card">
+    <div class="contact-card" data-reveal="zoom" style="--stagger: 1;">
       <div class="contact-links">
         <a href="mailto:contact@example.com" class="contact-btn email-btn">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"></path></svg>
@@ -88,13 +88,14 @@
   }
 
   .contact-card {
-    background-color: var(--pill-bg);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(10, 18, 32, 0.84));
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 3rem;
     width: 100%;
     max-width: 550px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 26px 56px rgba(2, 8, 23, 0.18);
   }
 
   .contact-links {
@@ -110,22 +111,28 @@
     gap: 1rem;
     width: 100%;
     padding: 1.2rem;
-    border-radius: 8px;
+    border-radius: 999px;
     font-size: 1.1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
     text-decoration: none;
   }
 
   .email-btn {
-    background-color: var(--accent);
-    color: #000;
+    background:
+      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 36%, white));
+    color: #04111f;
+    box-shadow: 0 16px 32px color-mix(in srgb, var(--accent) 16%, transparent);
   }
 
   .email-btn:hover {
-    background-color: var(--accent-hover);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+    box-shadow: 0 20px 38px color-mix(in srgb, var(--accent) 22%, transparent);
   }
 
   .linkedin-btn {
