@@ -1,0 +1,196 @@
+---
+const avatarSrc = "/avatar.png";
+---
+
+<section class="hero" id="about">
+  <div class="profile-container">
+    <img src={avatarSrc} alt="Alex Johnson Profile" class="profile-pic" />
+  </div>
+
+  <h1 class="name">CLément Pageaux</h1>
+  <h2 class="title">Software Engineer</h2>
+
+  <p class="bio">
+    I build scalable web applications with clean code and thoughtful UX.<br />
+    Passionate about creating impactful software that solves real problems.
+  </p>
+
+  <div class="actions">
+    <a href="https://linkedin.com" target="_blank" class="btn btn-outline">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+        ></path>
+      </svg>
+      LinkedIn
+    </a>
+    <a href="#" class="btn btn-primary">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 512 512"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+        ></path>
+      </svg>
+      Download Resume
+    </a>
+  </div>
+
+  <div class="scroll-down-hint">
+    <p>Scroll to explore</p>
+    <svg
+      class="scroll-arrow"
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      height="1.5em"
+      width="1.5em"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        d="M11 4h2v12l5.5-5.5 1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5 11 16z"
+      ></path>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 2rem;
+    position: relative;
+  }
+
+  .profile-container {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 20;
+  }
+
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    animation: glow 4s infinite ease-in-out;
+  }
+
+  .name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0, 229, 255, 0.05);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #000;
+    border: 1px solid var(--accent);
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+  }
+
+  .scroll-down-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .scroll-arrow {
+    color: var(--accent);
+    animation: bounceArrow 2s infinite ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .name {
+      font-size: 2.5rem;
+    }
+    .bio {
+      padding: 0 1rem;
+    }
+    .actions {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 2rem;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

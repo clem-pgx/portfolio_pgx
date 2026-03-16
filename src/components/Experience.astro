@@ -1,0 +1,258 @@
+---
+const timeline = [
+  {
+    type: "Work Experience",
+    title: "Senior Software Engineer",
+    organization: "TechCorp Inc.",
+    date: "Jan 2023\nPresent", // Use \n for line break to match the design date layout
+    description: "Led development of microservices architecture serving 500k+ users. Improved system performance by 40% through query optimization and caching strategies.",
+  },
+  {
+    type: "Work Experience",
+    title: "Software Engineer",
+    organization: "Innovate Solutions",
+    date: "Mar 2020\nDec 2022",
+    description: "Developed and maintained full-stack web applications. Collaborated with cross-functional teams to deliver new features on time.",
+  },
+  {
+    type: "Education",
+    title: "Master's Degree in Computer Science",
+    organization: "University of Technology",
+    date: "Sep 2018\nJun 2020",
+    description: "Specialized in Software Engineering and Distributed Systems. Graduated with Honors.",
+  },
+  {
+    type: "Education",
+    title: "Bachelor's Degree in Computer Science",
+    organization: "University of Science",
+    date: "Sep 2015\nJun 2018",
+    description: "Core computer science curriculum including algorithms, data structures, and database management.",
+  },
+  {
+    type: "Education",
+    title: "High School Diploma (Scientific Focus)",
+    organization: "Lycée Descartes",
+    date: "Sep 2012\nJun 2015",
+    description: "Mathematics and Physics specialization.",
+  }
+];
+---
+
+<section class="experience-section" id="experience">
+  <div class="container">
+    <div class="header-content">
+      <div class="section-badge"><span></span> Background</div>
+      <h2 class="section-title">Experience & Education</h2>
+      <p class="section-description">
+        My professional journey and academic background.
+      </p>
+    </div>
+
+    <div class="timeline">
+      {
+        timeline.map((item) => (
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="card-header">
+                <span class={`type-badge ${item.type === 'Education' ? 'education' : ''}`}>
+                  {item.type}
+                </span>
+                <span class="date">{item.date}</span>
+              </div>
+              <h3 class="role-title">{item.title}</h3>
+              <h4 class="organization">{item.organization}</h4>
+              <p class="description">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    min-height: 100vh;
+    padding: 8rem 4rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 800px; /* Thinner container for timeline readability */
+    width: 100%;
+  }
+
+  .header-content {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-badge {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .section-badge span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--accent);
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+
+  .section-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 4px;
+    width: 2px;
+    background-color: var(--border-color);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 0.25rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 6px var(--accent);
+    z-index: 10;
+  }
+
+  .timeline-content {
+    background-color: var(--pill-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .type-badge {
+    background-color: var(--accent);
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    display: inline-block;
+  }
+
+  /* Different color for education badges */
+  .type-badge.education {
+    background-color: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
+    white-space: pre-line;
+    line-height: 1.4;
+  }
+
+  .role-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .organization {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .experience-section {
+      padding: 6rem 1.5rem 2rem;
+    }
+    
+    .timeline {
+      padding-left: 1.5rem;
+    }
+    
+    .timeline::before {
+      left: 3px;
+    }
+    
+    .timeline-marker {
+      left: -1.5rem;
+      width: 8px;
+      height: 8px;
+      box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--accent);
+    }
+    
+    .timeline-content {
+      padding: 1.5rem;
+    }
+
+    .card-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .date {
+      text-align: left;
+    }
+  }
+</style>
