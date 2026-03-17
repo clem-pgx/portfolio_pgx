@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://clementpageaux.com/sitemap.xml

@@ -7,19 +7,86 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
+	description?: string;
+	canonicalPath?: string;
+	image?: string;
+	noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Portfolio de Clement Pageaux, Software Engineer base a Paris, specialise en architecture, conception et evolution d'applications web.",
+	canonicalPath,
+	image = "/clement-pageaux-linkedin.jpg",
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://clementpageaux.com");
+const canonicalUrl = new URL(
+	canonicalPath ?? Astro.url.pathname,
+	siteUrl
+).toString();
+const socialImageUrl = new URL(image, siteUrl).toString();
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Clement Pageaux",
+	url: siteUrl.toString(),
+	image: socialImageUrl,
+	jobTitle: "Software Engineer",
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Paris",
+		addressCountry: "FR",
+	},
+	email: "mailto:pageauxclement@gmail.com",
+	sameAs: [
+		"https://www.linkedin.com/in/cl%C3%A9ment-pageaux-758377172/",
+		"https://clementpageaux.com",
+	],
+	worksFor: {
+		"@type": "Organization",
+		name: "Manewco",
+	},
+};
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio de Clement Pageaux, Software Engineer base a Paris." />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="robots"
+			content={noindex
+				? "noindex,nofollow"
+				: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"}
+		/>
+		<meta name="author" content="Clement Pageaux" />
+		<meta name="theme-color" content="#050914" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:site_name" content="Clement Pageaux" />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={socialImageUrl} />
+		<meta
+			property="og:image:alt"
+			content="Photo de profil de Clement Pageaux"
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageUrl} />
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(personSchema)}
+		></script>
 		<ClientRouter />
 		<title>{title}</title>
 	</head>
