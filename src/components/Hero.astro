@@ -1,22 +1,36 @@
 ---
-const avatarSrc = "/avatar.png";
+const avatarSrc = "/clement-pageaux-linkedin.jpg";
+const linkedinUrl =
+  "https://www.linkedin.com/in/cl%C3%A9ment-pageaux-758377172/";
+const profilePdfUrl = "/clement-pageaux-profile.pdf";
 ---
 
 <section class="hero section-shell" id="about" data-accent="#67e8f9">
   <div class="profile-container" data-reveal="zoom">
-    <img src={avatarSrc} alt="Portrait de Clément Pageaux" class="profile-pic" />
+    <img
+      src={avatarSrc}
+      alt="Portrait de Clément Pageaux"
+      class="profile-pic"
+    />
   </div>
 
   <h1 class="name" data-reveal style="--stagger: 1;">Clément Pageaux</h1>
   <h2 class="title" data-reveal style="--stagger: 2;">Software Engineer</h2>
 
   <p class="bio" data-reveal style="--stagger: 3;">
-    I build scalable web applications with clean code and thoughtful UX.<br />
-    Passionate about creating impactful software that solves real problems.
+    Software Engineer base a Paris, j'interviens sur l'architecture, la
+    conception et l'evolution d'applications web en production.<br />
+    J'aime transformer les besoins metier en solutions techniques pragmatiques, fiables
+    et maintenables.
   </p>
 
   <div class="actions" data-reveal style="--stagger: 4;">
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+    <a
+      href={linkedinUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
       <svg
         stroke="currentColor"
         fill="currentColor"
@@ -31,7 +45,7 @@ const avatarSrc = "/avatar.png";
       </svg>
       LinkedIn
     </a>
-    <a href="#" class="btn btn-primary">
+    <a href={profilePdfUrl} class="btn btn-primary" download>
       <svg
         stroke="currentColor"
         fill="currentColor"
@@ -44,12 +58,12 @@ const avatarSrc = "/avatar.png";
           d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
         ></path>
       </svg>
-      Download Resume
+      Telecharger mon profil
     </a>
   </div>
 
   <div class="scroll-down-hint" data-reveal style="--stagger: 5;">
-    <p>Scroll to explore</p>
+    <p>Scroll pour explorer</p>
     <svg
       class="scroll-arrow"
       stroke="currentColor"
@@ -109,8 +123,11 @@ const avatarSrc = "/avatar.png";
     margin-bottom: 1.5rem;
     padding: 0.5rem 0.95rem;
     border-radius: 999px;
-    background:
-      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 40%, white));
+    background: linear-gradient(
+      135deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 40%, white)
+    );
     box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 18%, transparent);
   }
 
@@ -138,12 +155,8 @@ const avatarSrc = "/avatar.png";
     border-radius: 999px;
     font-weight: 600;
     font-size: 0.95rem;
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease,
-      color 0.3s ease,
-      background-color 0.3s ease,
-      box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+      background-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .btn-outline {
@@ -155,14 +168,21 @@ const avatarSrc = "/avatar.png";
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 10%, rgba(255, 255, 255, 0.02));
+    background: color-mix(
+      in srgb,
+      var(--accent) 10%,
+      rgba(255, 255, 255, 0.02)
+    );
     transform: translateY(-2px);
     box-shadow: 0 18px 34px rgba(2, 8, 23, 0.25);
   }
 
   .btn-primary {
-    background:
-      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 45%, white));
+    background: linear-gradient(
+      135deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 45%, white)
+    );
     color: #04111f;
     border: 1px solid var(--accent);
     font-weight: 600;

@@ -1,61 +1,78 @@
 ---
 const timeline = [
   {
-    type: "Work Experience",
-    title: "Senior Software Engineer",
-    organization: "TechCorp Inc.",
-    date: "Jan 2023\nPresent", // Use \n for line break to match the design date layout
-    description: "Led development of microservices architecture serving 500k+ users. Improved system performance by 40% through query optimization and caching strategies.",
-  },
-  {
-    type: "Work Experience",
+    type: "Experience",
     title: "Software Engineer",
-    organization: "Innovate Solutions",
-    date: "Mar 2020\nDec 2022",
-    description: "Developed and maintained full-stack web applications. Collaborated with cross-functional teams to deliver new features on time.",
+    organization: "Manewco",
+    date: "Fevrier 2023\nAujourd'hui",
+    description:
+      "Architecture, conception, developpement et evolution d'applications web en environnement de production. Analyse des besoins, traduction en solutions techniques pragmatiques et collaboration avec les equipes pour securiser les livraisons.",
   },
   {
-    type: "Education",
-    title: "Master's Degree in Computer Science",
-    organization: "University of Technology",
-    date: "Sep 2018\nJun 2020",
-    description: "Specialized in Software Engineering and Distributed Systems. Graduated with Honors.",
+    type: "Experience",
+    title: "Software Engineer",
+    organization: "Vigicorp",
+    date: "Octobre 2020\nSeptembre 2022",
+    description:
+      "Participation aux phases d'analyse, developpement, test et correction. Montee en autonomie sur des sujets pris en charge de bout en bout, avec un focus sur la qualite, la maintenabilite et la stabilite des solutions livrees.",
   },
   {
-    type: "Education",
-    title: "Bachelor's Degree in Computer Science",
-    organization: "University of Science",
-    date: "Sep 2015\nJun 2018",
-    description: "Core computer science curriculum including algorithms, data structures, and database management.",
+    type: "Formation",
+    title: "Mastère Expert Developpement Web",
+    organization: "Nantes Ynov Campus",
+    date: "2020\n2022",
+    description:
+      "Cycle de specialisation en developpement web et conception d'applications.",
   },
   {
-    type: "Education",
-    title: "High School Diploma (Scientific Focus)",
-    organization: "Lycée Descartes",
-    date: "Sep 2012\nJun 2015",
-    description: "Mathematics and Physics specialization.",
-  }
+    type: "Formation",
+    title: "Licence professionnelle metier du numerique",
+    organization: "IUT de Bayonne et du Pays basque",
+    date: "2019\n2020",
+    description:
+      "Parcours informatique oriente metiers du numerique et developpement.",
+  },
+  {
+    type: "Formation",
+    title: "DUT Informatique",
+    organization: "IUT de Bayonne et du Pays basque",
+    date: "2017\n2018",
+    description:
+      "Bases solides en developpement, algorithmique et conception logicielle.",
+  },
 ];
 ---
 
-<section class="experience-section section-shell" id="experience" data-accent="#f59e0b">
+<section
+  class="experience-section section-shell"
+  id="experience"
+  data-accent="#f59e0b"
+>
   <div class="container" data-section-scroll>
     <div class="header-content" data-reveal>
-      <div class="section-badge"><span></span> Background</div>
-      <h2 class="section-title">Experience & Education</h2>
+      <div class="section-badge"><span></span> Parcours</div>
+      <h2 class="section-title">Experience & Formation</h2>
       <p class="section-description">
-        My professional journey and academic background.
+        Un apercu de mon parcours professionnel et de mes formations.
       </p>
     </div>
 
     <div class="timeline">
       {
         timeline.map((item, index) => (
-          <div class="timeline-item" data-reveal style={`--stagger: ${index + 1};`}>
-            <div class="timeline-marker"></div>
+          <div
+            class="timeline-item"
+            data-reveal
+            style={`--stagger: ${index + 1};`}
+          >
+            <div class="timeline-marker" />
             <div class="timeline-content">
               <div class="card-header">
-                <span class={`type-badge ${item.type === 'Education' ? 'education' : ''}`}>
+                <span
+                  class={`type-badge ${
+                    item.type === "Formation" ? "education" : ""
+                  }`}
+                >
                   {item.type}
                 </span>
                 <span class="date">{item.date}</span>
@@ -127,13 +144,17 @@ const timeline = [
   }
 
   .timeline::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 4px;
     width: 2px;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 70%, transparent), rgba(148, 163, 184, 0.14));
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--accent) 70%, transparent),
+      rgba(148, 163, 184, 0.14)
+    );
   }
 
   .timeline-item {
@@ -158,14 +179,15 @@ const timeline = [
   }
 
   .timeline-content {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(10, 18, 32, 0.84));
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(10, 18, 32, 0.84)
+    );
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 2rem;
-    transition:
-      transform 0.35s ease,
-      border-color 0.35s ease,
+    transition: transform 0.35s ease, border-color 0.35s ease,
       box-shadow 0.35s ease;
     box-shadow: 0 22px 48px rgba(2, 8, 23, 0.16);
   }
@@ -173,7 +195,8 @@ const timeline = [
   .timeline-content:hover {
     transform: translateY(-6px);
     border-color: var(--accent);
-    box-shadow: 0 28px 56px color-mix(in srgb, var(--accent) 12%, rgba(2, 8, 23, 0.3));
+    box-shadow: 0 28px 56px
+      color-mix(in srgb, var(--accent) 12%, rgba(2, 8, 23, 0.3));
   }
 
   .card-header {
@@ -184,8 +207,11 @@ const timeline = [
   }
 
   .type-badge {
-    background:
-      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 32%, white));
+    background: linear-gradient(
+      135deg,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 32%, white)
+    );
     color: #04111f;
     font-size: 0.8rem;
     font-weight: 600;
@@ -233,22 +259,22 @@ const timeline = [
     .experience-section {
       padding: 6rem 1.5rem 2rem;
     }
-    
+
     .timeline {
       padding-left: 1.5rem;
     }
-    
+
     .timeline::before {
       left: 3px;
     }
-    
+
     .timeline-marker {
       left: -1.5rem;
       width: 8px;
       height: 8px;
       box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 5px var(--accent);
     }
-    
+
     .timeline-content {
       padding: 1.5rem;
     }
