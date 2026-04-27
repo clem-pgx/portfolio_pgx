@@ -7,7 +7,7 @@ import Projects from "../components/Projects.astro";
 import Contact from "../components/Contact.astro";
 ---
 
-<Layout
+<!-- <Layout
 	title="Clement Pageaux | Software Engineer"
 	description="Portfolio de Clement Pageaux, Software Engineer base a Paris. Experience en architecture, conception, maintenance evolutive et developpement d'applications web."
 	canonicalPath="/"
@@ -17,4 +17,34 @@ import Contact from "../components/Contact.astro";
 	<Skills />
 	<Projects />
 	<Contact />
-</Layout>
+</Layout> -->
+<main>
+  <h1>Portfolio en cours de finalisation</h1>
+  <p>
+    Mon portfolio sera bientôt disponible.
+  </p>
+  <p>
+    En attendant, vous pouvez consulter mon GitHub :
+    <a href="https://github.com/clem-pgx">github.com/clem-pgx</a>
+  </p>
+</main>
+
+<style>
+  main {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 2rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+</style>
